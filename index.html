@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Button with useState</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .counter-button {
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            background-color: #02849e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(180, 45, 45, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        .counter-button:hover {
+            background-color: #26ce4b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Counter Button with useState</h1>
+    <div id="counterApp"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function CounterButton() {
+            const [count, setCount] = useState(27);
+
+            const handleClick = () => {
+                setCount(count + 1);
+            };
+
+            return (
+                <button className="counter-button" onClick={handleClick}>
+                    {count}
+                </button>
+            );
+        }
+
+        const rootElement = document.getElementById("counterApp");
+        ReactDOM.createRoot(rootElement).render(<CounterButton />);
+    </script>
+</body>
+</html>
